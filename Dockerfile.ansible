@@ -1,0 +1,25 @@
+FROM centos:7
+
+ENV container docker
+
+STOPSIGNAL SIGRTMIN+3
+
+RUN yum -y install epel-release && \
+    yum -y update && \
+    yum -y install awscli jq iproute ansible make git python-junit_xml python-yaml ansible-lint python-pip && \
+    pip install boto boto3 pywinrm && \
+    yum clean all
+
+COPY ./ec2.ini /root/ec2.ini
+COPY ./ec2.py /root/ec2.py
+COPY ./inventory /root/inventory
+COPY ./.vault-pass.txt /root/.vault-pass.txt
+
+RUN chmod +x /root/ec2.py
+
+ENV EC2_INI_PATH /root/ec2.ini
+ENV ANSIBLE_INVENTORY /root/ec2.py
+
+WORKDIR /srv/
+
+COPY . /srv
