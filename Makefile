@@ -28,10 +28,10 @@ ansibleclean: setup
 	- docker rmi -f $(DOCKER_TAG)_ap_ansible_configure || true
 
 buildByAnsible: setup
-        docker build --pull=true -t $(DOCKER_TAG)_ap_ansible_license -f Dockerfile.ansible .
-        docker run --rm -t \
-        --name $(DOCKER_TAG)_ap_ansible_license --rm $(DOCKER_TAG)_ap_ansible_license \
-        sh -c 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook site.yml'
+	docker build --pull=true -t $(DOCKER_TAG)_ap_ansible_license -f Dockerfile.ansible .
+	docker run --rm -t \
+	--name $(DOCKER_TAG)_ap_ansible_license --rm $(DOCKER_TAG)_ap_ansible_license \
+	sh -c 'ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook site.yml'
 
 deployByAnsible: setup
 	docker build --pull=true -t $(DOCKER_TAG)_ap_ansible_license -f Dockerfile.ansible .
