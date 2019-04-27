@@ -1,0 +1,7 @@
+---
+image_name: dockerServer
+image_tag: java
+dockerfile_path: /tmp/Dockerfile
+zip_docker_name: zip_server
+war_docker_name: war_server
+java_image: "{{ image_name }}:{{ image_tag }}"

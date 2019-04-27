@@ -1,0 +1,30 @@
+---
+- name: copy over the dockerfile for java application
+  synchronize:
+    src: files/Dockerfile
+    dest: /tmp/Dockerfile
+    archive: yes
+    links: yes
+
+- name: build java environment from Dockerfile
+  docker_image:
+     name: "{{ image_name }}"
+     tag: "{{ image_tag }}"
+     state: present
+     path: "{{ dockerfile_path }}"
+
+- name: start the java container for server1 for .zip artifacts
+  docker_container:
+    name: "{{ zip_docker_name }}"
+    image: "{{ java_image }}"
+    privileged: true
+    ports:
+      - 5000:5000
+
+- name: start the java container for server2 for .war artifacts
+  docker_container:
+    name: "{{ war_docker_name }}"
+    image: "{{ java_image }}"
+    privileged: true
+    ports:
+      - 5001:5001
