@@ -7,7 +7,7 @@ STOPSIGNAL SIGRTMIN+3
 RUN yum -y install epel-release && \
     yum -y update && \
     yum -y install awscli jq iproute ansible make git python-junit_xml python-yaml ansible-lint python-pip && \
-    pip install boto boto3 docker-py && \
+    pip install boto boto3 docker-py docker && \
     yum clean all
 
 WORKDIR /srv/
