@@ -13,7 +13,6 @@ RUN yum -y install epel-release && \
 COPY ./ec2.ini /root/ec2.ini
 COPY ./ec2.py /root/ec2.py
 COPY ./inventory /root/inventory
-COPY ./.vault-pass.txt /root/.vault-pass.txt
 
 RUN chmod +x /root/ec2.py
 
