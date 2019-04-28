@@ -1,5 +1,5 @@
 ---
-- name: create network for nginx jenkins and sonarqube
+- name: create network for java servers 
   docker_network:
     name: java_network
 
