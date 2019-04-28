@@ -8,14 +8,14 @@
 
 - name: add inventory groups
   add_host:
-    name: 54.229.114.204
+    name: 34.246.182.240
     groups: java_server
     ansible_ssh_private_key_file: /tmp/aws_key.pem
     ansible_user: ubuntu
 
 - name: wait for SSH to set up
   wait_for:
-    host: 54.229.114.204
+    host: 34.246.182.240
     port: 22
     delay: 10
     timeout: 100
@@ -24,4 +24,4 @@
 - name: Render etc hosts file
   become: true
   command: hostname
-  delegate_to: 54.229.114.204
+  delegate_to: 34.246.182.240

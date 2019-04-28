@@ -9,7 +9,7 @@
     - vars/var.yml
 
 - name: build environment
-  hosts: "54.229.114.204"
+  hosts: 34.246.182.240
   become: true
   gather_facts: true
   roles:
@@ -18,7 +18,7 @@
     - build
 
 - name: deploy artifacts
-  hosts: "54.229.114.204"
+  hosts: 34.246.182.240
   become: true
   gather_facts: true
   roles:
