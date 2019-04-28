@@ -16,6 +16,8 @@
     - build_env
   tags:
     - build
+  vars_files:
+    - vars/main.yml
 
 - name: deploy artifacts
   hosts: "{{ hostip }}"
@@ -25,3 +27,5 @@
     - deployment
   tags:
     - deploy
+  vars_files:
+    - vars/main.yml
