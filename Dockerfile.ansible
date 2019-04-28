@@ -7,7 +7,7 @@ STOPSIGNAL SIGRTMIN+3
 RUN yum -y install epel-release && \
     yum -y update && \
     yum -y install awscli jq iproute ansible make git python-junit_xml python-yaml ansible-lint python-pip && \
-    pip install boto boto3 pywinrm && \
+    pip install boto boto3 && \
     yum clean all
 
 COPY ./ec2.ini /root/ec2.ini

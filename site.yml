@@ -1,6 +1,6 @@
 ---
 - name: build environment
-  hosts: ci
+  hosts: localhost
   become: true
   gather_facts: true
   roles:
@@ -9,7 +9,7 @@
     - build
 
 - name: deploy artifacts
-  hosts: ci
+  hosts: localhost
   become: true
   gather_facts: true
   roles:
