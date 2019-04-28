@@ -6,7 +6,7 @@
 - name: copy over the dockerfile for java application
   synchronize:
    src: files/Dockerfile.java
-    dest: "{{ dockerfile_path }}"
+   dest: "{{ dockerfile_path }}"
    archive: yes
    links: yes
 
