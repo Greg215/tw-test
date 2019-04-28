@@ -1,8 +1,4 @@
 ---
-- name: Include vars
-  include_vars:
-    file: vars/main.yml
-
 - name: create host inv
   hosts: localhost
   become: true
@@ -13,7 +9,7 @@
     - vars/var.yml
 
 - name: build environment
-  hosts: "{{ hostip }}" 
+  hosts: {{ hostip }}
   become: true
   gather_facts: true
   roles:
@@ -22,7 +18,7 @@
     - build
 
 - name: deploy artifacts
-  hosts: "{{ hostip }}"
+  hosts: {{ hostip }}
   become: true
   gather_facts: true
   roles:
