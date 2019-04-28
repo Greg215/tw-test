@@ -21,6 +21,7 @@
   docker_container:
     name: "{{ zip_docker_name }}"
     image: "{{ java_image }}"
+    command: tail -f /dev/null
     privileged: true
     ports:
       - 5000:5000
@@ -31,6 +32,7 @@
   docker_container:
     name: "{{ war_docker_name }}"
     image: "{{ java_image }}"
+    command: tail -f /dev/null
     privileged: true
     ports:
       - 5001:5001
