@@ -1,3 +1,13 @@
 ---
+# step 1  stop the containers
+#
+# step 2 replace the java code by the new one
+#
+# step 3 restart containers
+# since we have no realy  job here i will only add the restart steps
+# you can do this by either using Ansible docker module or command line
+- name: restart container one
+  command: docker restart {{ zip_docker_name }}
 
-
+- name: restart second container
+  command: docker restart {{ war_docker_name }}
