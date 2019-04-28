@@ -10,14 +10,14 @@ RUN yum -y install epel-release && \
     pip install boto boto3 && \
     yum clean all
 
-COPY ./ec2.ini /root/ec2.ini
-COPY ./ec2.py /root/ec2.py
-COPY ./inventory /root/inventory
+COPY ./ec2.ini /srv/ec2.ini
+COPY ./ec2.py /srv/ec2.py
+COPY ./inventory /srv/inventory
 
-RUN chmod +x /root/ec2.py
+RUN chmod +x /srv/ec2.py
 
-ENV EC2_INI_PATH /root/ec2.ini
-ENV ANSIBLE_INVENTORY /root/ec2.py
+ENV EC2_INI_PATH /srv/ec2.ini
+ENV ANSIBLE_INVENTORY /srv/ec2.py
 
 WORKDIR /srv/
 

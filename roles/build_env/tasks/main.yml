@@ -1,4 +1,8 @@
 ---
+- name: create network for nginx jenkins and sonarqube
+  docker_network:
+    name: java_network
+
 - name: copy over the dockerfile for java application
   synchronize:
     src: files/Dockerfile
@@ -20,6 +24,8 @@
     privileged: true
     ports:
       - 5000:5000
+    networks:
+      - name: java_network
 
 - name: start the java container for server2 for .war artifacts
   docker_container:
@@ -28,3 +34,5 @@
     privileged: true
     ports:
       - 5001:5001
+    networks:
+      - name: java_network
