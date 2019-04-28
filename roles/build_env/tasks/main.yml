@@ -5,17 +5,17 @@
 
 #- name: copy over the dockerfile for java application
 #  synchronize:
-#    src: files/Dockerfile
+#   src: files/Dockerfile.java
 #    dest: "{{ dockerfile_path }}"
-#    archive: yes
-#    links: yes
+#   archive: yes
+#   links: yes
 
 - name: build java environment from Dockerfile
   docker_image:
      name: "{{ image_name }}"
      tag: "{{ image_tag }}"
      state: present
-     path: files/Dockerfile
+     path: "{{ dockerfile_path }}"
 
 - name: start the java container for server1 for .zip artifacts
   docker_container:
