@@ -1,0 +1,3 @@
+---
+zip_docker_name: zip_server
+war_docker_name: war_server
