@@ -1,12 +1,21 @@
 # Dockerfile This is a Dockerfile for a simple Java application, no maven installed here.
-FROM java:8  
+FROM openjdk:8-jdk
 
-MAINTAINER  Greg Hu
+MAINTAINER greg hu
 
-COPY . /var/www/java  
+EXPOSE 5000 5001
 
-WORKDIR /var/www/java  
+VOLUME /tmp/javaserver
 
-RUN javac Hello.java  
+COPY *.java /var/www/service/
 
-CMD ["java", "Hello"]  
+COPY *.java /var/www/service/
+
+COPY *.java /var/www/service/
+
+WORKDIR /var/www/service
+
+RUN javac Hello.java
+
+CMD ["java", "-war", "/app/service.war", "-zip", "/app/service.zip"]
+
