@@ -7,9 +7,9 @@ EXPOSE 5000 5001
 
 VOLUME /tmp/javaserver
 
-COPY *.java /var/www/service/
+COPY *.war /var/www/service/
 
-COPY *.java /var/www/service/
+COPY *.zip /var/www/service/
 
 COPY *.java /var/www/service/
 
@@ -17,5 +17,5 @@ WORKDIR /var/www/service
 
 RUN javac Hello.java
 
-CMD ["java", "-war", "/app/service.war", "-zip", "/app/service.zip"]
+CMD ["java", "Hello"]
 
