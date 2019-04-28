@@ -24,7 +24,7 @@ void executeMakeStep(String makeStep, int size ){
     if (size > 0 || env.PREVIOUS_BUILD_RESULT=="FAILURE") {
       sh  'make -s ' + makeStep
       }else{
-        echo 'nothing to execute because there are no changes'
+        echo 'Nothing to execute because there are no changes'
       }
 }
 
@@ -62,7 +62,7 @@ node{
    stage ('Select to create a new Dev env or use locally') {
      def envType = waitForUserInput('Create new Environment or deploy locally ', "Deploy Locally" + "\nCreate New Env" + "\nNone", 60, 'none')
 	if(envType == 'Deploy Locally') {
-		  
+
 		  stage ('Build DEV environment in docker') {
                     def userInput = waitForUserInput('Build new Dev Env ? ', 'no\nyes', 60, 'no')
 		    if (userInput.contains("yes")){
@@ -74,7 +74,7 @@ node{
 		   }
 
 	 	  stage ('Deploy Locally') {
-		    def userInput = waitForUserInput('Deploy artifacts ? ', 'no\nyes', 60, 'no')		
+		    def userInput = waitForUserInput('Deploy artifacts ? ', 'no\nyes', 60, 'no')
 		    if (userInput.contains("yes")){
                           echo "Deploy artifacts."
 		    	  executeMakeStep('deployByAnsible', 1)
@@ -85,11 +85,10 @@ node{
 
 	} else if (envType == 'Create New Env') {
 		echo "Function not defined yet, and no other envs available yet!"
-	 
+
 	} else {
 		echo "No environment selected"
 	}
     }
   }
 }
- 
