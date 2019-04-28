@@ -5,17 +5,17 @@
 
 - name: copy over the dockerfile for java application
   synchronize:
-   src: files/Dockerfile.java
+   src: files/
    dest: "{{ dockerfile_path }}"
    archive: yes
    links: yes
 
-- name: change the dockerfile permission
-  file:
-    path: "{{ dockerfile_path }}"
-    owner: ubuntu
-    group: ubuntu
-    mode: 0755
+#- name: change the dockerfile permission
+#  file:
+#    path: "{{ dockerfile_path }}"
+#   owner: ubuntu
+#   group: ubuntu
+#   mode: 0755
 
 - name: build java environment from Dockerfile
   docker_image:
