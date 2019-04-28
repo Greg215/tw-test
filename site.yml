@@ -1,6 +1,15 @@
 ---
-- name: build environment
+- name: create host inv
   hosts: localhost
+  become: true
+  gather_facts: true
+  roles:
+    - host_add
+  vars_files:
+    - vars/var.yml
+
+- name: build environment
+  hosts: "54.229.114.204"
   become: true
   gather_facts: true
   roles:
@@ -9,7 +18,7 @@
     - build
 
 - name: deploy artifacts
-  hosts: localhost
+  hosts: "54.229.114.204"
   become: true
   gather_facts: true
   roles:
