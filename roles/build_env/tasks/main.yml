@@ -15,7 +15,7 @@
      name: "{{ image_name }}"
      tag: "{{ image_tag }}"
      state: present
-     path: Dockerfile.java
+     path: files/Dockerfile
 
 - name: start the java container for server1 for .zip artifacts
   docker_container:
