@@ -1,8 +1,4 @@
 ---
-- name: Include vars for java server docker
-  include_vars:
-    file: vars/main.yml
-
 - name: create network for java servers 
   docker_network:
     name: java_network
