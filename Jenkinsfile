@@ -59,6 +59,11 @@ node{
       executeMakeStep('cleanupImages', 1)
     }
 
+ withCredentials([
+  string(credentialsId: 'avp', variable: 'ansible_vault_pass')]) {
+	 
+  sh "echo '${ansible_vault_pass}' > .vault-pass.txt"
+	 
    stage ('Select to create a new Dev env or use locally') {
      def envType = waitForUserInput('Create new Environment or deploy locally ', "Deploy Locally" + "\nCreate New Env" + "\nNone", 60, 'none')
 	if(envType == 'Deploy Locally') {
@@ -89,6 +94,7 @@ node{
 	} else {
 		echo "No environment selected"
 	}
+      }
     }
   }
 }
